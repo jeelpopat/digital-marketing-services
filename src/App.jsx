@@ -12,6 +12,11 @@ import ServicePage from './pages/ServicePage.jsx';
 import Blog from './pages/Blog.jsx';               
 import BlogPost from './pages/BlogPost.jsx';
 import Contact from './pages/Contact.jsx';
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx';
+import Copyright from './pages/Copyright.jsx';
+import Agency from './pages/Agency.jsx';
+import CaseStudy from './pages/CaseStudy.jsx';
+import Resource from './pages/Resource.jsx';
 
 import WebsiteUIDesign from './pages/WebsiteUIDesign.jsx';
 import WebDevelopment from './pages/WebDevelopment.jsx';
@@ -37,6 +42,11 @@ function App() {
           <Route path="/blog/:id" element={<BlogPost />} />
           
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/copyright" element={<Copyright />} />
+          <Route path="/agency" element={<Agency />} />
+          <Route path="/casestudy" element={<CaseStudy />} />
+          <Route path="/resource" element={<Resource />} />
 
           {/* Main Service Page */}
           <Route path="/service" element={<ServicePage />} />

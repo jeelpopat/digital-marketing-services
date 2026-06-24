@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
 import heroImage from '../assets/ImageWithFallback.png';
+import ServiceCTA from '../components/ServiceCTA.jsx';
 
 const OptimizationSupport = () => {
   return (
@@ -33,9 +34,9 @@ const OptimizationSupport = () => {
               </p>
 
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2 w-full sm:w-auto">
-                <button className="w-full sm:w-auto bg-[#A8EB59] text-black px-8 py-3.5 rounded-lg font-bold shadow-[0_0_2px] hover:bg-[#96dc4a] transition-colors">
+                {/* <button className="w-full sm:w-auto bg-[#A8EB59] text-black px-8 py-3.5 rounded-lg font-bold shadow-[0_0_2px] hover:bg-[#96dc4a] transition-colors">
                   Secure Your Plan →
-                </button>
+                </button> */}
                 <button className="w-full sm:w-auto bg-white border border-gray-200 text-black px-8 py-3.5 rounded-lg font-semibold hover:bg-gray-50 transition-colors shadow-xl">
                   View Packages
                 </button>
@@ -119,19 +120,12 @@ const OptimizationSupport = () => {
           </div>
 
           {/* Bottom CTA */}
-          <div className="mx-0 md:mx-10 lg:mx-40 bg-gradient-to-r from-[#EAF5DF] to-[#F4F9EE] rounded-[1rem] p-8 md:p-16 text-center shadow-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#A8EB59]/10 rounded blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-            <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-              <h2 className="text-2xl md:text-4xl font-medium text-black">Keep Growing Without Interruptions</h2>
-              <p className="text-gray-500 font-normal text-base md:text-lg leading-relaxed">
-                Partner with us for continuous optimization to ensure your digital assets always perform at their best.
-              </p>
-              <div className="pt-4">
-                <button className="w-full sm:w-auto bg-[#A8EB59] text-black px-8 py-3.5 rounded-lg font-normal shadow-[0_0_14px] hover:bg-[#96dc4a] transition-colors inline-flex items-center justify-center text-lg md:text-xl gap-2">
-                  View Maintenance Plans <span>→</span>
-                </button>
-              </div>
-            </div>
+          <div className="mx-0 md:mx-10 lg:mx-40 mb-16">
+            <ServiceCTA 
+              title="Ready to Build Your Platform?" 
+              subtitle="Partner with us for continuous optimization to ensure your digital assets always perform at their best."
+              defaultService="Ongoing Optimization & Support" 
+            />
           </div>
         </div>
       </main>

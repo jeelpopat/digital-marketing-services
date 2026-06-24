@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header.jsx';
 import Footer from '../components/Footer.jsx';
+import ServiceCTA from '../components/ServiceCTA.jsx';
 
-import uxUiIcon from '../assets/ServicesOverview.png';        //  Bullseye icon
-import aiIcon from '../assets/ServicesOverview (1).png';      // Robot icon
-import buildIcon from '../assets/ServicesOverview (2).png';   // Lightning bolt icon
-import performanceIcon from '../assets/ServicesOverview (3).png'; // Bar chart icon
+import uxUiIcon from '../assets/ServicesOverview.png';        
+import aiIcon from '../assets/ServicesOverview (1).png';      
+import buildIcon from '../assets/ServicesOverview (2).png';   
+import performanceIcon from '../assets/ServicesOverview (3).png'; 
 
 const ServicePage = () => {
   // 6 Main Services 
@@ -69,7 +70,6 @@ const ServicePage = () => {
         <svg className="w-7 h-7 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M3.5 20.5 17 7a2.12 2.12 0 1 0-3-3L.5 17.5Z" />
           <path d="m17.5 6.5-3-3" />
-          {/* Sparkles */}
           <path d="M9 3v2M8 4h2" />
           <path d="M17 14v2M16 15h2" />
           <path d="M13 1v2M12 2h2" />
@@ -107,7 +107,6 @@ const ServicePage = () => {
     }
   ];
 
-  // Data for "Why Choose Us" features (Updated with icon paths)
   const features = [
     { title: "Seamless UX & UI", desc: "Research-backed design that boosts engagement and trust", iconSrc: uxUiIcon },
     { title: "AI Integration", desc: "24/7 automation, support, and marketing efficiency", iconSrc: aiIcon },
@@ -117,7 +116,6 @@ const ServicePage = () => {
 
   return (
     <div className="min-h-screen bg-[#F8F8F8] flex flex-col">
-
       <main className="flex-grow w-full py-16 md:py-12 px-6 md:px-12 lg:px-16">
         <div className="max-w-[1400px] mx-4">
           
@@ -129,7 +127,7 @@ const ServicePage = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight">
               Premium Digital Solutions
             </h1>
-            <p className="text-gray-500 text-lg mt-2 md:text-base m max-w-3xl leading-relaxed">
+            <p className="text-gray-500 text-lg mt-2 md:text-base max-w-3xl leading-relaxed">
               From branding and UI/UX design to AI-powered automation and marketing, we transform brands with creative and result-driven solutions.
             </p>
           </div>
@@ -138,17 +136,14 @@ const ServicePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {servicesData.map((service, index) => (
               <div key={index} className="bg-[#F0F7E6] rounded-[2rem] p-8 md:p-10 shadow-xl hover:shadow-2xl transition-shadow duration-300 flex flex-col h-full">
-                
                 <div className={`w-14 h-14 rounded-2xl ${service.iconBg} ${service.iconText} flex items-center justify-center mb-8 relative`}>
                   <div className="w-6 h-6 bg-current rounded-full opacity-20 absolute blur-md"></div>
                   {service.icon}
                 </div>
-
                 <h3 className="text-2xl font-semibold text-black mb-4">{service.title}</h3>
                 <p className="text-gray-600 font-medium leading-relaxed mb-8 flex-grow">
                   {service.desc}
                 </p>
-
                 <ul className="space-y-3 mb-8">
                   {service.points.map((point, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-gray-700 font-medium">
@@ -159,7 +154,6 @@ const ServicePage = () => {
                     </li>
                   ))}
                 </ul>
-
                 <Link to={service.path} className="flex items-center gap-2 text-black font-semibold hover:text-blue-600 transition-colors mt-auto">
                   Learn More 
                   <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
@@ -178,11 +172,7 @@ const ServicePage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
                 <div key={index} className="bg-[#EDF5ED] rounded-[24px] p-8 text-center flex flex-col items-center shadow-sm hover:-translate-y-1 transition-transform duration-300">
-                  <img 
-                    src={feature.iconSrc} 
-                    alt={`${feature.title} icon`} 
-                    className="w-14 h-14 object-contain shadow-md rounded-2xl mb-6"
-                  />
+                  <img src={feature.iconSrc} alt={`${feature.title} icon`} className="w-14 h-14 object-contain shadow-md rounded-2xl mb-6" />
                   <h3 className="text-xl font-bold text-black mb-3">{feature.title}</h3>
                   <p className="text-gray-500 font-medium leading-relaxed max-w-[240px]">{feature.desc}</p>
                 </div>
@@ -190,27 +180,11 @@ const ServicePage = () => {
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="w-full bg-gradient-to-r from-[#EAF5DF] to-[#F4F9EE] rounded-[3rem] p-12 md:p-16 text-center border border-[#dcedcd] shadow-sm relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#A8EB59]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-            <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-              <h2 className="text-3xl md:text-4xl font-medium text-black">Ready to Build Your Platform?</h2>
-              <p className="text-gray-500 font-medium text-lg leading-relaxed">
-                Let's discuss your project and how our custom web development services can scale your digital presence.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <button className="w-full sm:w-auto bg-[#A8EB59] text-[#1a2016] px-8 py-3.5 rounded-xl font-bold text-lg hover:bg-[#96dc4a] transition-all duration-300 shadow-[0_0_25px_rgba(168,235,89,0.25)] flex items-center justify-center gap-2">
-                  Start Your Project <span>→</span>
-                </button>
-                <button className="w-full sm:w-auto border border-[#A8EB59] text-black px-8 py-3.5 rounded-xl font-semibold text-lg hover:bg-white/10 transition-all duration-300">
-                  View Our Work
-                </button>
-              </div>
-            </div>
-          </div>
+          {/* DYNAMIC CTA SECTION (Now imported as a reusable component!) */}
+          <ServiceCTA />
+
         </div>
       </main>
-
     </div>
   );
 };

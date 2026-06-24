@@ -1,6 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Contact = () => {
+  // 1. State to hold form data
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    companyName: '',
+    message: ''
+  });
+  
+  // State to show loading/success/error messages
+  const [status, setStatus] = useState(''); 
+
+  // 2. Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // 3. Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('Sending...');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setStatus('Message sent successfully!');
+        // Reset form after successful submission
+        setFormData({ fullName: '', email: '', companyName: '', message: '' }); 
+      } else {
+        setStatus('Failed to send message.');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('An error occurred. Please try again later.');
+    }
+  };
+
   return (
     <main className="w-full bg-[#F8F9FA] pb-10">
       {/* Header  */}
@@ -75,26 +118,38 @@ const Contact = () => {
 
           {/* Form */}
           <div className="w-full lg:w-1/2">
-            <form className="flex flex-col space-y-4">
+            <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
               <input 
                 type="text" 
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
                 placeholder="Full Name *" 
                 className="w-full px-6 py-4 rounded-xl bg-[#F8F9FA] border border-gray-100 focus:ring-2 focus:ring-[#8AE66D] outline-none text-gray-700 placeholder-gray-400 font-medium"
                 required
               />
               <input 
                 type="email" 
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Email Address *" 
                 className="w-full px-6 py-4 rounded-xl bg-[#F8F9FA] border border-gray-100 focus:ring-2 focus:ring-[#8AE66D] outline-none text-gray-700 placeholder-gray-400 font-medium"
                 required
               />
               <input 
                 type="text" 
+                name="companyName"
+                value={formData.companyName}
+                onChange={handleChange}
                 placeholder="Company Name *" 
                 className="w-full px-6 py-4 rounded-xl bg-[#F8F9FA] border border-gray-100 focus:ring-2 focus:ring-[#8AE66D] outline-none text-gray-700 placeholder-gray-400 font-medium"
                 required
               />
               <textarea 
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="How can we help you?" 
                 rows="5"
                 className="w-full px-6 py-4 rounded-xl bg-[#F8F9FA] border border-gray-100 focus:ring-2 focus:ring-[#8AE66D] outline-none text-gray-700 placeholder-gray-400 font-medium resize-none"
@@ -111,13 +166,24 @@ const Contact = () => {
                   </svg>
                 </button>
               </div>
+
+              {/* Status Message Display */}
+              {status && (
+                <p className={`text-sm mt-3 font-medium ${
+                  status.includes('successfully') ? 'text-green-600' : 
+                  status.includes('error') || status.includes('Failed') ? 'text-red-600' : 
+                  'text-gray-800'
+                }`}>
+                  {status}
+                </p>
+              )}
             </form>
           </div>
 
         </div>
       </section>
 
-      {/* 3. Map Section */}
+      {/* Map Section */}
       <section className="max-w-6xl mx-4 md:mx-12 lg:mx-60 px-4 md:px-6">
         <div className="w-full h-64 md:h-96 bg-gray-200 rounded-xl overflow-hidden shadow-sm">
           <iframe 
