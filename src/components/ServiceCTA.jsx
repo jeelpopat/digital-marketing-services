@@ -28,15 +28,15 @@ const ServiceCTA = ({
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('Sending request...');
+  e.preventDefault();
+  setStatus('Sending request...');
 
     try {
-      const response = await fetch('https://digital-marketing-services-backend.onrender.com/api/service', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch('http://localhost:5000/api/service', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData)
+    });
       
       const data = await response.json();
       
@@ -52,8 +52,8 @@ const ServiceCTA = ({
         setStatus('Failed to send request.');
       }
     } catch (error) {
-      setStatus('An error occurred. Please try again later.');
-    }
+    setStatus('Failed to send message.');
+   }
   };
 
   return (
